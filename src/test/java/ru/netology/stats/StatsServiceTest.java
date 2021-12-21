@@ -6,70 +6,50 @@ import ru.netology.stats.StatsService;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StatsServiceTest {
+    private StatsService service = new StatsService();
+    private int[] manegerSales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
     @org.junit.jupiter.api.Test
     void shouldCalcSum() {
-        StatsService service = new StatsService();
-        int[] manegerSales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 180;
-        int actual = service.shouldСalcSum(manegerSales);
+        int actual = service.calcSum(manegerSales);
         assertEquals(expected, actual);
 
     }
 
     @Test
     void shouldAverageMonthlySales() {
-        StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 15;
-
-        int actual = service.shouldAverageMonthlySales(sales);
-
+        int actual = service.averageMonthlySales(manegerSales);
         assertEquals(expected, actual);
     }
 
 
     @Test
     void shouldTheMonthWithThePeakOfSales() {
-        StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 2;
-
-        int actual = service.shouldTheMonthWithThePeakOfSales(sales);
-
+        int expected = 8;
+        int actual = service.theMonthWithThePeakOfSales(manegerSales);
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldTheMonthWithMinimumSales() {
-        StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 9;
-
-        int actual = service.shouldTheMonthWithMinimumSales(sales);
-
+        int actual = service.theMonthWithMinimumSales(manegerSales);
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldMaxMonthSales() {
-        StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 8;
-
-        int actual = service.shouldMaxMonthSales(sales);
-
+        int actual = service.maxMonthSales(manegerSales);
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldMinMonthSales() {
-        StatsService service = new StatsService();
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 9;
-
-        int actual = service.shouldMinMonthSales(sales);
-
+        int actual = service.minMonthSales(manegerSales);
         assertEquals(expected, actual);
     }
 }
