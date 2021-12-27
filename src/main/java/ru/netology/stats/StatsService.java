@@ -16,6 +16,23 @@ public class StatsService {
 
 
     public int theMonthWithThePeakOfSales(int[] sales) {
+        int peakOfSales = peakOfSales(sales);
+        int theMonthWithThePeakOfSales;
+        int monthCount = 0;
+        theMonthWithThePeakOfSales = 0;
+        for (int sale : sales) {
+            monthCount++;
+            if (peakOfSales == sale) {
+                theMonthWithThePeakOfSales = monthCount;
+            }
+
+        }
+
+
+        return theMonthWithThePeakOfSales;
+    }
+
+    private int peakOfSales(int[] sales) {
         int peakOfSales = sales[0];
         int theMonthWithThePeakOfSales = 0;
         for (int sale : sales) {
@@ -24,43 +41,38 @@ public class StatsService {
 
             }
         }
-            int monthCount = 0;
-            theMonthWithThePeakOfSales = 0;
-            for (int sale : sales) {
-                monthCount++;
-                if (peakOfSales == sale){
-                    theMonthWithThePeakOfSales = monthCount;
-                }
-
-            }
-
-
-        return theMonthWithThePeakOfSales;
+        return peakOfSales;
     }
 
 
-        public int theMonthWithMinimumSales(int[] sales) {
-            int minimumSales = sales[0];
-            int theMonthWithMinimumSales = 0;
-            for (int sale : sales) {
-                if (sale < minimumSales) {
-                    minimumSales = sale;
-
-                }
-            }
-            int monthCount = 0;
-            theMonthWithMinimumSales = 0;
-            for (int sale : sales) {
-                monthCount++;
-                if (minimumSales == sale){
-                    theMonthWithMinimumSales = monthCount;
-                }
-
+    public int theMonthWithMinimumSales(int[] sales) {
+        int minimumSales = minimumSales(sales);
+        int theMonthWithMinimumSales;
+        int monthCount = 0;
+        theMonthWithMinimumSales = 0;
+        for (int sale : sales) {
+            monthCount++;
+            if (minimumSales == sale) {
+                theMonthWithMinimumSales = monthCount;
             }
 
-
-            return theMonthWithMinimumSales;
         }
+
+
+        return theMonthWithMinimumSales;
+    }
+
+    private int minimumSales(int[] sales) {
+        int minimumSales = sales[0];
+        int theMonthWithMinimumSales = 0;
+        for (int sale : sales) {
+            if (sale < minimumSales) {
+                minimumSales = sale;
+
+            }
+        }
+        return minimumSales;
+    }
 
     public int maxMonthSales(int[] sales) {
         int currentMaxSalesMonth = 1;
