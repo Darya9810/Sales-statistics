@@ -1,7 +1,7 @@
 package ru.netology.stats;
 
 public class StatsService {
-    public int calcSum(int[] sales) {
+    public int calcSum(int[] sales) { //сумма всех продаж
         int sum = 0;
         for (int sale : sales) {
             sum += sale;
@@ -9,13 +9,13 @@ public class StatsService {
         return sum;
     }
 
-    public int averageMonthlySales(int[] sales) {
+    public int averageMonthlySales(int[] sales) { //средняя сумма продаж в месяц
         int averageSale = calcSum(sales) / sales.length;
         return averageSale;
     }
 
 
-    public int theMonthWithThePeakOfSales(int[] sales) {
+    public int theMonthWithThePeakOfSales(int[] sales) { //Номер месяца, в котором был максимум продаж
         int peakOfSales = peakOfSales(sales);
         int theMonthWithThePeakOfSales;
         int monthCount = 0;
@@ -45,7 +45,7 @@ public class StatsService {
     }
 
 
-    public int theMonthWithMinimumSales(int[] sales) {
+    public int theMonthWithMinimumSales(int[] sales) { //Номер месяца, в котором был минимум продаж
         int minimumSales = minimumSales(sales);
         int theMonthWithMinimumSales;
         int monthCount = 0;
@@ -74,29 +74,25 @@ public class StatsService {
         return minimumSales;
     }
 
-    public int maxMonthSales(int[] sales) {
-        int currentMaxSalesMonth = 1;
-        int currentMax = sales[0];
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[i] >= currentMax) {
-                currentMax = sales[i];
-                currentMaxSalesMonth = i + 1;
+    public int lowerAverage(int[] sales) {  // Кол-во месяцев, в которых продажи были ниже среднего
+        int average = averageMonthlySales(sales);
+        int numberMonth = 0;
+        for (int sale : sales) {
+            if (sale < average) {
+                numberMonth++; //счетчик
             }
         }
-        return currentMaxSalesMonth;
+        return numberMonth;
     }
-
-
-    public int minMonthSales(int[] sales) {
-        int currentMinSalesMonth = 1;
-        int currentMin = sales[0];
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[i] <= currentMin) {
-                currentMin = sales[i];
-                currentMinSalesMonth = i + 1;
+    public int upperAverage(int[] sales) {  //Кол-во месяцев, в которых продажи были выше среднего
+        int average = averageMonthlySales(sales);
+        int numberMonth = 0;
+        for (int sale : sales) {
+            if (sale > average) {
+                numberMonth++;
             }
         }
-        return currentMinSalesMonth;
+        return numberMonth;
     }
 }
 
